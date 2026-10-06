@@ -1,0 +1,10 @@
+
+{
+  "version": "1.0",
+  "jurisdiction": "India - Supreme Court judgments",
+  "cases": [
+    {"id":"R001","task_type":"retrieval","query":"Section 302 IPC","mode":"hybrid","k":5,"relevant_ids":[],"held_out":true},
+    {"id":"R002","task_type":"retrieval","query":"principles of natural justice","mode":"hybrid","k":5,"relevant_ids":[],"held_out":true},
+    {"id":"A001","task_type":"ask","query":"What evidence in the corpus supports this proposition?","expected_keywords":[],"held_out":true}
+  ]
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "question": "Why did the court reject the petition?",
+    "expected_citations": [],
+    "expected_keywords": ["court"]
+  },
+  {
+    "question": "What does the document say about Section 302 IPC?",
+    "expected_citations": [],
+    "expected_keywords": ["section"]
+  },
+  {
+    "question": "Summarize the judgment.",
+    "expected_citations": [],
+    "expected_keywords": ["evidence"]
+  }
+]

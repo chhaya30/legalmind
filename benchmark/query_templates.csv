@@ -1,0 +1,51 @@
+id,task_type,query,relevant_document_ids,relevant_page_numbers,held_out
+Q001,provision_lookup,What does Section 302 IPC provide?,,,true
+Q002,provision_lookup,Which case discusses Article 21?,,,true
+Q003,factual,What were the material facts of the case?,,,true
+Q004,factual,What happened before the petition was filed?,,,true
+Q005,reasoning,Why did the Court reject the petition?,,,true
+Q006,reasoning,What was the Court's reasoning on natural justice?,,,true
+Q007,comparison,Compare the reasoning in the two cases.,,,true
+Q008,comparison,How do the outcomes differ?,,,true
+Q009,summary,Summarize the judgment.,,,true
+Q010,summary,What are the key holdings?,,,true
+Q011,provision_lookup,Which statutory provisions were applied?,,,true
+Q012,factual,Who were the parties?,,,true
+Q013,factual,What relief was sought?,,,true
+Q014,reasoning,Why did the Court accept the argument?,,,true
+Q015,reasoning,What test did the Court apply?,,,true
+Q016,comparison,What facts are common to both cases?,,,true
+Q017,comparison,Which legal provisions differ?,,,true
+Q018,summary,Give a concise case overview.,,,true
+Q019,summary,List the major issues decided.,,,true
+Q020,provision_lookup,What does the judgment say about Article 14?,,,true
+Q021,factual,What was the procedural history?,,,true
+Q022,reasoning,What precedent did the Court rely on?,,,true
+Q023,reasoning,Why was the earlier decision distinguished?,,,true
+Q024,comparison,Compare the holdings of both judgments.,,,true
+Q025,summary,Summarize the Court's final order.,,,true
+Q026,provision_lookup,Which Act is cited most directly?,,,true
+Q027,factual,What evidence was relied upon?,,,true
+Q028,reasoning,Why was the evidence accepted or rejected?,,,true
+Q029,comparison,How are the factual backgrounds different?,,,true
+Q030,summary,What are the five most important points?,,,true
+Q031,provision_lookup,Which constitutional provision controls the issue?,,,true
+Q032,factual,When was the judgment delivered?,,,true
+Q033,reasoning,How did the Court interpret the provision?,,,true
+Q034,reasoning,What principle did the Court establish?,,,true
+Q035,comparison,Which case has the broader holding?,,,true
+Q036,summary,Provide the judgment timeline.,,,true
+Q037,provision_lookup,Which sections of the Penal Code are discussed?,,,true
+Q038,factual,What arguments did the appellant make?,,,true
+Q039,reasoning,Why did the Court prefer one interpretation?,,,true
+Q040,comparison,Compare the legal reasoning section by section.,,,true
+Q041,summary,What was the final outcome?,,,true
+Q042,provision_lookup,What statutory test was applied?,,,true
+Q043,factual,What relief did the respondent oppose?,,,true
+Q044,reasoning,What were the decisive reasons for the outcome?,,,true
+Q045,comparison,Which issues were decided differently?,,,true
+Q046,summary,Summarize facts issues law reasoning and outcome.,,,true
+Q047,provision_lookup,Which precedent is most relevant to the issue?,,,true
+Q048,factual,What dates and events led to the dispute?,,,true
+Q049,reasoning,What did the Court say about the competing arguments?,,,true
+Q050,comparison,Are the two cases legally similar or distinguishable?,,,true

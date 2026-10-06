@@ -1,0 +1,15 @@
+{
+  "version": "0.1",
+  "documents_target": 30,
+  "queries_target": 50,
+  "queries": [
+    {
+      "id": "Q001",
+      "query": "Section 302 IPC",
+      "mode": "hybrid",
+      "relevant_document_ids": [],
+      "relevant_chunk_ids": [],
+      "notes": "Exact statutory phrase test"
+    }
+  ]
+}

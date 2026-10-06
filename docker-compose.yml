@@ -1,0 +1,80 @@
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: legalmind-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: legalmind
+      POSTGRES_PASSWORD: legalmind
+      POSTGRES_DB: legalmind
+    ports: ["5432:5432"]
+    volumes: [legalmind_pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U legalmind -d legalmind"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  redis:
+    image: redis:7-alpine
+    container_name: legalmind-redis
+    restart: unless-stopped
+    ports: ["6379:6379"]
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql+psycopg://legalmind:legalmind@postgres:5432/legalmind
+      REDIS_URL: redis://redis:6379/0
+      ADMIN_API_KEY: ${ADMIN_API_KEY:?Set ADMIN_API_KEY in .env}
+      EVALUATOR_API_KEY: ${EVALUATOR_API_KEY:?Set EVALUATOR_API_KEY in .env}
+      AUTH_SECRET: ${AUTH_SECRET:?Set AUTH_SECRET in .env}
+      UPLOAD_DIR: /app/data/uploads
+      PROCESSED_DIR: /app/data/processed
+      FRONTEND_ORIGIN: http://localhost:5173
+      LLM_PROVIDER: ${LLM_PROVIDER:-openai-compatible}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_MODEL: ${LLM_MODEL:-gpt-4o-mini}
+      LLM_BASE_URL: ${LLM_BASE_URL:-https://api.openai.com/v1}
+      RETENTION_DAYS: ${RETENTION_DAYS:-0}
+      RATE_LIMIT_PER_MINUTE: ${RATE_LIMIT_PER_MINUTE:-60}
+      ENABLE_LEGAL_TRANSFORMER_NLP: ${ENABLE_LEGAL_TRANSFORMER_NLP:-true}
+      ENABLE_FAITHFULNESS_JUDGE: ${ENABLE_FAITHFULNESS_JUDGE:-true}
+    volumes: ["./data:/app/data"]
+    ports: ["8000:8000"]
+    depends_on:
+      postgres: {condition: service_healthy}
+      redis: {condition: service_started}
+  worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.worker
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql+psycopg://legalmind:legalmind@postgres:5432/legalmind
+      REDIS_URL: redis://redis:6379/0
+      ADMIN_API_KEY: ${ADMIN_API_KEY:?Set ADMIN_API_KEY in .env}
+      EVALUATOR_API_KEY: ${EVALUATOR_API_KEY:?Set EVALUATOR_API_KEY in .env}
+      AUTH_SECRET: ${AUTH_SECRET:?Set AUTH_SECRET in .env}
+      UPLOAD_DIR: /app/data/uploads
+      PROCESSED_DIR: /app/data/processed
+      FRONTEND_ORIGIN: http://localhost:5173
+      LLM_PROVIDER: ${LLM_PROVIDER:-openai-compatible}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_MODEL: ${LLM_MODEL:-gpt-4o-mini}
+      LLM_BASE_URL: ${LLM_BASE_URL:-https://api.openai.com/v1}
+      RETENTION_DAYS: ${RETENTION_DAYS:-0}
+      RATE_LIMIT_PER_MINUTE: ${RATE_LIMIT_PER_MINUTE:-60}
+      ENABLE_LEGAL_TRANSFORMER_NLP: ${ENABLE_LEGAL_TRANSFORMER_NLP:-true}
+      ENABLE_FAITHFULNESS_JUDGE: ${ENABLE_FAITHFULNESS_JUDGE:-true}
+    volumes: ["./data:/app/data"]
+    depends_on:
+      postgres: {condition: service_healthy}
+      redis: {condition: service_started}
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    ports: ["5173:80"]
+    depends_on: [backend]
+volumes:
+  legalmind_pgdata:

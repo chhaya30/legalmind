@@ -1,0 +1,1 @@
+export default function ErrorState({message,onRetry}){return <div className="error-state"><b>Something went wrong</b><p>{message}</p>{onRetry&&<button className="secondary" onClick={onRetry}>Try again</button>}</div>}

@@ -1,0 +1,1 @@
+Place small, legally reusable/sample PDFs here. Keep fixtures anonymized or sourced under an appropriate license. The Phase 1 integration suite should later include: normal text PDF, multi-page PDF, scanned PDF, malformed PDF, and oversized-file fixture.
